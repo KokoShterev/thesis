@@ -1,6 +1,6 @@
 //
 //  SignUpViewController.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 8.02.24.
 //

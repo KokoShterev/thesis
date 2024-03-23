@@ -1,6 +1,6 @@
 //
 //  Apartment.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 12.02.24.
 //

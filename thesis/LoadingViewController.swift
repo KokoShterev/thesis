@@ -1,6 +1,6 @@
 //
 //  LoadingViewController.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 9.02.24.
 //

@@ -1,6 +1,6 @@
 //
 //  FirebaseManager.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 13.02.24.
 //

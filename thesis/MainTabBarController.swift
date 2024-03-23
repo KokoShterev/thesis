@@ -1,6 +1,6 @@
 //
 //  MainTabBarController.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 18.02.24.
 //

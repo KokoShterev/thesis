@@ -75,7 +75,7 @@
 		1E10090C2B7D638A004B7F30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1EBDD7D42B74257B005A526C /* thesi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thesi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EBDD7D42B74257B005A526C /* thesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EBDD7D72B74257B005A526C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EBDD7D92B74257B005A526C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1EBDD7DB2B74257B005A526C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		1EBDD7D52B74257B005A526C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EBDD7D42B74257B005A526C /* thesi.app */,
+				1EBDD7D42B74257B005A526C /* thesis.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,9 +191,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1EBDD7D32B74257B005A526C /* thesi */ = {
+		1EBDD7D32B74257B005A526C /* thesis */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EBDD7E82B74257F005A526C /* Build configuration list for PBXNativeTarget "thesi" */;
+			buildConfigurationList = 1EBDD7E82B74257F005A526C /* Build configuration list for PBXNativeTarget "thesis" */;
 			buildPhases = (
 				1EBDD7D02B74257B005A526C /* Sources */,
 				1EBDD7D12B74257B005A526C /* Frameworks */,
@@ -203,7 +203,7 @@
 			);
 			dependencies = (
 			);
-			name = thesi;
+			name = thesis;
 			packageProductDependencies = (
 				1EBDD7EC2B742B6B005A526C /* FirebaseAnalytics */,
 				1EBDD7EE2B742B6B005A526C /* FirebaseAnalyticsOnDeviceConversion */,
@@ -251,7 +251,7 @@
 				1E90824D2B7AD42C00F8CE61 /* FirebaseStorageCombine-Community */,
 			);
 			productName = diplomna;
-			productReference = 1EBDD7D42B74257B005A526C /* thesi.app */;
+			productReference = 1EBDD7D42B74257B005A526C /* thesis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -269,7 +269,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1EBDD7CF2B74257B005A526C /* Build configuration list for PBXProject "thesi" */;
+			buildConfigurationList = 1EBDD7CF2B74257B005A526C /* Build configuration list for PBXProject "thesis" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -285,7 +285,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EBDD7D32B74257B005A526C /* thesi */,
+				1EBDD7D32B74257B005A526C /* thesis */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +475,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B96TLMS8KQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = diplomna/Info.plist;
+				INFOPLIST_FILE = thesis/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -486,7 +486,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cshterev.diplomna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cshterev.thesis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -503,7 +503,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B96TLMS8KQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = diplomna/Info.plist;
+				INFOPLIST_FILE = thesis/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -514,7 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cshterev.diplomna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cshterev.thesis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -525,7 +525,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EBDD7CF2B74257B005A526C /* Build configuration list for PBXProject "thesi" */ = {
+		1EBDD7CF2B74257B005A526C /* Build configuration list for PBXProject "thesis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EBDD7E62B74257F005A526C /* Debug */,
@@ -534,7 +534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EBDD7E82B74257F005A526C /* Build configuration list for PBXNativeTarget "thesi" */ = {
+		1EBDD7E82B74257F005A526C /* Build configuration list for PBXNativeTarget "thesis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EBDD7E92B74257F005A526C /* Debug */,

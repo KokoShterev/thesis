@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  diplomna
+//  thesis
 //
 //  Created by Constantine Shterev on 7.02.24.
 //
