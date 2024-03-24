@@ -7,8 +7,11 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var databaseRef: DatabaseReference!
 
     // UI Elements
     let profileImageView: UIImageView = {
@@ -46,14 +49,32 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        databaseRef = Database.database().reference()
         setupViews()
 //        fetchUserData()
         fetchApartments()
-//        addProfileImageTapGesture()
+//        handleImageTap()
 
-//        apartmentListTableView.dataSource = self
-//        apartmentListTableView.delegate = self
+        apartmentListTableView.dataSource = self
+        apartmentListTableView.delegate = self
         tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "person.fill"), tag: 0)
+    }
+    
+    // MARK: - Table View Data Source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return apartments.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "apartmentCell", for: indexPath) as! ApartmentTableViewCell
+        cell.configure(with: apartments[indexPath.row])
+        return cell
+    }
+
+    // MARK: - Table View Delegate (optional for selection handling)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Handle what happens when a cell is selected (e.g., show apartment details)
+        tableView.deselectRow(at: indexPath, animated: true) // Deselect for visual feedback
     }
 
     // MARK: - UI Setup
@@ -113,7 +134,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 //    }
 
     func fetchApartments() {
-        // Implement fetch apartments for the user
+        FirebaseManager.shared.fetchApartments { apartments in
+            self.apartments = apartments
+//            self.printApartments()
+            self.apartmentListTableView.reloadData()
+        }
     }
 
 //    @objc func addApartmentTapped() {
