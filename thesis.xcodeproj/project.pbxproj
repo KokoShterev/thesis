@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E10090A2B7D6381004B7F30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1009082B7D6381004B7F30 /* Main.storyboard */; };
 		1E10090D2B7D638A004B7F30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E10090B2B7D638A004B7F30 /* LaunchScreen.storyboard */; };
+		1E6A4FED2BB4B47C004D8B0E /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6A4FEC2BB4B47C004D8B0E /* KeychainHelper.swift */; };
 		1E90821A2B7AD42C00F8CE61 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9082192B7AD42B00F8CE61 /* FirebaseAnalytics */; };
 		1E90821C2B7AD42C00F8CE61 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90821B2B7AD42C00F8CE61 /* FirebaseAnalyticsOnDeviceConversion */; };
 		1E90821E2B7AD42C00F8CE61 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90821D2B7AD42C00F8CE61 /* FirebaseAnalyticsSwift */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		1E1009092B7D6381004B7F30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E10090C2B7D638A004B7F30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1E6A4FEC2BB4B47C004D8B0E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1EBDD7D42B74257B005A526C /* thesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				1ED397C22B7C03C800104D59 /* FirebaseManager.swift */,
 				1EE6346B2B828FF900B68CF0 /* MainTabBarController.swift */,
 				1EC74EC22BAF28D00086B4C0 /* TestViewController.swift */,
+				1E6A4FEC2BB4B47C004D8B0E /* KeychainHelper.swift */,
 			);
 			path = thesis;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				1EE6346A2B8289B700B68CF0 /* ProfileViewController.swift in Sources */,
 				1ED574BE2B76D2B600AC295B /* LoadingViewController.swift in Sources */,
 				1EAB175E2B7564CC000C6B88 /* SignUpViewController.swift in Sources */,
+				1E6A4FED2BB4B47C004D8B0E /* KeychainHelper.swift in Sources */,
 				1EBDD7DA2B74257B005A526C /* SceneDelegate.swift in Sources */,
 				1ECFC3062B7ACD880027FFF3 /* CreateAnApartment.swift in Sources */,
 			);
