@@ -7,6 +7,7 @@
 
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class FirebaseManager {
@@ -27,6 +28,32 @@ class FirebaseManager {
                     } else {
                         // MARK: - Handle potential parsing errors
                         print("bad")
+                    }
+                }
+            }
+            completion(apartments)
+        })
+    }
+    
+    func fetchFilterdApartments(completion: @escaping ([Apartment]) -> Void) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            // Handle the case where there's no current user
+            print("Error: No current user signed in")
+            completion([])  // Return an empty array
+            return
+        }
+
+        databaseRef.child("apartments").observe(.value, with: { snapshot in
+            var apartments: [Apartment] = []
+
+            // (Same parsing logic as in the original 'fetchApartments' function)
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let apartmentData = childSnapshot.value as? [String: Any] {
+
+                    if let apartment = Apartment(data: apartmentData),
+                       apartment.landlordID == currentUserID {
+                        apartments.append(apartment)
                     }
                 }
             }

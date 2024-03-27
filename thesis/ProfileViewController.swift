@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 //    }
 
     func fetchApartments() {
-        FirebaseManager.shared.fetchApartments { apartments in
+        FirebaseManager.shared.fetchFilterdApartments { apartments in
             self.apartments = apartments
 //            self.printApartments()
             self.apartmentListTableView.reloadData()
