@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SwiftUI
 
 class SignUpViewController: UIViewController {
 
@@ -135,7 +136,6 @@ class SignUpViewController: UIViewController {
             // Success! (You might want to store additional user data in Firestore)
             self.handleLogin()
             print("User created successfully!")
-            self.dismiss(animated: true) // Back to login screen
         }
     }
 
@@ -158,6 +158,10 @@ class SignUpViewController: UIViewController {
 
         print("Logged in successfully!")
         // TODO: Present home screen
+        let tabBarView = UIHostingController(rootView: TabBarView())
+        let navigationController = UINavigationController(rootViewController: tabBarView)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
 
     private func setupViews() {
