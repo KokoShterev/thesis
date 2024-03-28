@@ -5,8 +5,10 @@
 //  Created by Constantine Shterev on 12.02.24.
 //
 
+import Foundation
+
 struct Apartment {
-//    let id: String // We'll generate a unique ID
+    var id: String // We'll generate a unique ID
     var location: String
     var address: String?
     var numRooms: Int
@@ -20,8 +22,7 @@ struct Apartment {
     var landlordID: String
     
     init?(data: [String: Any]) {
-        guard 
-//            let id = data["id"] as? String,
+        guard
               let location = data["location"] as? String,
               let numRooms = data["numRooms"] as? Int,
               let squareMeters = data["squareMeters"] as? Int,
@@ -32,7 +33,7 @@ struct Apartment {
               let pricePerNight = data["pricePerNight"] as? Double,
               let landlordID = data["landlordID"] as? String else { return nil }
 
-//        self.id = id
+        self.id = UUID().uuidString
         self.location = location
         self.address = data["address"] as? String
         self.numRooms = numRooms
@@ -63,6 +64,7 @@ struct DateRange {
 
 func apartmentToDictionary(apartment: Apartment) -> [String: Any] {
     var result: [String: Any] = [
+        "id": apartment.id,
         "location": apartment.location,
         "address": apartment.address ?? "",
         "numRooms": apartment.numRooms,

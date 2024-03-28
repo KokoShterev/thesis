@@ -56,13 +56,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 
-    // MARK: Optional
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedApartment = apartments[indexPath.row]
-//        let detailsViewController = ApartmentDetailsViewController(apartment: selectedApartment)
-//        navigationController?.pushViewController(detailsViewController, animated: true)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Handle what happens when a cell is selected (e.g., show apartment details)
+        let selectedApartment = apartments[indexPath.row]
+        let apartmentDetailsVC = ApartmentDetailsViewController(apartment: selectedApartment)
+        present(apartmentDetailsVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true) // Deselect for visual feedback
+    }
+    
     func fetchApartments() {
         FirebaseManager.shared.fetchApartments { apartments in
             self.apartments = apartments
@@ -73,7 +74,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func printApartments(includeImages: Bool = false, includeLandlord: Bool = false) {
         for apartment in apartments {
             print("*** Apartment ***")
-//            print("ID: \(apartment.id)")
+            print("ID: \(apartment.id)")
             print("Location: \(apartment.location)")
             print("Address: \(apartment.address ?? "Not available")") // Handle optional address
             print("Rooms: \(apartment.numRooms)")

@@ -39,6 +39,7 @@
 		1E90824E2B7AD42C00F8CE61 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1E90824D2B7AD42C00F8CE61 /* FirebaseStorageCombine-Community */; };
 		1E9082502B7AD80400F8CE61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */; };
 		1EAB175E2B7564CC000C6B88 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */; };
+		1EAE98592BB5719600C29E59 /* ApartmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE98582BB5719600C29E59 /* ApartmentDetailsViewController.swift */; };
 		1EBDD7D82B74257B005A526C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7D72B74257B005A526C /* AppDelegate.swift */; };
 		1EBDD7DA2B74257B005A526C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7D92B74257B005A526C /* SceneDelegate.swift */; };
 		1EBDD7DC2B74257B005A526C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7DB2B74257B005A526C /* LoginViewController.swift */; };
@@ -78,6 +79,7 @@
 		1E6A4FEC2BB4B47C004D8B0E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1EAE98582BB5719600C29E59 /* ApartmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewController.swift; sourceTree = "<group>"; };
 		1EBDD7D42B74257B005A526C /* thesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EBDD7D72B74257B005A526C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EBDD7D92B74257B005A526C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1ED397BE2B7C019C00104D59 /* HomeViewController.swift */,
 				1EE634692B8289B700B68CF0 /* ProfileViewController.swift */,
 				1EDB64B32BB4F3DD009D09D7 /* AddApartmentViewController.swift */,
+				1EAE98582BB5719600C29E59 /* ApartmentDetailsViewController.swift */,
 				1ECFC3032B7ACA750027FFF3 /* Apartment.swift */,
 				1EBDD7D92B74257B005A526C /* SceneDelegate.swift */,
 				1E1009082B7D6381004B7F30 /* Main.storyboard */,
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EAE98592BB5719600C29E59 /* ApartmentDetailsViewController.swift in Sources */,
 				1EBDD7DC2B74257B005A526C /* LoginViewController.swift in Sources */,
 				1ED397C12B7C023100104D59 /* ApartmentTableViewCell.swift in Sources */,
 				1EE6346C2B828FF900B68CF0 /* MainTabBarController.swift in Sources */,

@@ -37,7 +37,7 @@ class AddApartmentViewController: UIViewController {
         squareMetersTextField.placeholder = "Square Meters"
         floorNumberTextField.placeholder = "Floor Number"
         utilitiesTextField.placeholder = "Utilities (e.g., WiFi, AC)"
-        descriptionTextField.text = "Description"
+        descriptionTextField.placeholder = "Description"
         pricePerNightTextField.placeholder = "Price per Night"
 
         confirmButton.setTitle("Confirm", for: .normal)
@@ -107,7 +107,7 @@ class AddApartmentViewController: UIViewController {
 
         // Save to Firebase Realtime Database
         let databaseRef = Database.database().reference()
-        databaseRef.child("apartments").childByAutoId().setValue(apartmentDict) { error, ref in
+        databaseRef.child("apartments").child(apartment.id).setValue(apartmentDict) { error, ref in
             if let error = error {
                 print("Error saving data: \(error)")
             } else {

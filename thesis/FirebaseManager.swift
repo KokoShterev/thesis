@@ -46,18 +46,22 @@ class FirebaseManager {
         databaseRef.child("apartments").observe(.value, with: { snapshot in
             var apartments: [Apartment] = []
 
-            // (Same parsing logic as in the original 'fetchApartments' function)
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot,
                    let apartmentData = childSnapshot.value as? [String: Any] {
 
-                    if let apartment = Apartment(data: apartmentData),
+                    if var apartment = Apartment(data: apartmentData),
                        apartment.landlordID == currentUserID {
+
+                        // Add the apartment ID
+                        apartment.id = childSnapshot.key
+
                         apartments.append(apartment)
                     }
                 }
             }
             completion(apartments)
         })
+
     }
 }
