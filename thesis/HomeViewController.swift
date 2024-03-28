@@ -66,7 +66,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func fetchApartments() {
         FirebaseManager.shared.fetchApartments { apartments in
             self.apartments = apartments
-//            self.printApartments()
             self.tableView.reloadData()
         }
     }
@@ -88,11 +87,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //                    print("- \(photoUrl)")
 //                }
 //            }
-
-            if includeLandlord {
-                print("Landlord ID: \(apartment.landlordID)")
-            }
-
+            print("Landlord ID: \(apartment.landlordID)")
             print("----------------") // Separator
         }
     }

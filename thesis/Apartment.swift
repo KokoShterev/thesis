@@ -15,7 +15,7 @@ struct Apartment {
     var utilities: [String]
     var description: String
 //    var photos: [String]
-    var availableDates: [DateRange]
+    var availableDates: [DateRange]?
     var pricePerNight: Double
     var landlordID: String
     
@@ -29,7 +29,6 @@ struct Apartment {
               let utilities = data["utilities"] as? [String],
               let description = data["description"] as? String,
 //              let photos = data["photos"] as? [String],
-              let availableDatesData = data["availableDates"] as? [[String: String]],
               let pricePerNight = data["pricePerNight"] as? Double,
               let landlordID = data["landlordID"] as? String else { return nil }
 
@@ -45,7 +44,7 @@ struct Apartment {
         self.pricePerNight = pricePerNight
         self.landlordID = landlordID
 
-        self.availableDates = availableDatesData.compactMap { DateRange(data: $0) }
+        self.availableDates = data["availableDates"] as? [DateRange]
         print("init completed")
     }
 }
@@ -63,7 +62,7 @@ struct DateRange {
 
 
 func apartmentToDictionary(apartment: Apartment) -> [String: Any] {
-    return [
+    var result: [String: Any] = [
         "location": apartment.location,
         "address": apartment.address ?? "",
         "numRooms": apartment.numRooms,
@@ -72,11 +71,16 @@ func apartmentToDictionary(apartment: Apartment) -> [String: Any] {
         "utilities": apartment.utilities,
         "description": apartment.description,
 //        "photos": apartment.photos,
-        "availableDates": apartment.availableDates.map {
-                             ["startDate": $0.startDate, "endDate": $0.endDate]
-                         },
         "pricePerNight": apartment.pricePerNight,
         "landlordID": apartment.landlordID
     ]
+    
+    if let dates = apartment.availableDates {
+        result["availableDates"] = dates.map {
+            ["startDate": $0.startDate, "endDate": $0.endDate]
+        }
+    }
+
+    return result
 }
 

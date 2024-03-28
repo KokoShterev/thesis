@@ -67,6 +67,7 @@
 		1ED397C12B7C023100104D59 /* ApartmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED397C02B7C023100104D59 /* ApartmentTableViewCell.swift */; };
 		1ED397C32B7C03C800104D59 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED397C22B7C03C800104D59 /* FirebaseManager.swift */; };
 		1ED574BE2B76D2B600AC295B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED574BD2B76D2B600AC295B /* LoadingViewController.swift */; };
+		1EDB64B42BB4F3DD009D09D7 /* AddApartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDB64B32BB4F3DD009D09D7 /* AddApartmentViewController.swift */; };
 		1EE6346A2B8289B700B68CF0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE634692B8289B700B68CF0 /* ProfileViewController.swift */; };
 		1EE6346C2B828FF900B68CF0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE6346B2B828FF900B68CF0 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		1ED397C02B7C023100104D59 /* ApartmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentTableViewCell.swift; sourceTree = "<group>"; };
 		1ED397C22B7C03C800104D59 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		1ED574BD2B76D2B600AC295B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		1EDB64B32BB4F3DD009D09D7 /* AddApartmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApartmentViewController.swift; sourceTree = "<group>"; };
 		1EE634692B8289B700B68CF0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1EE6346B2B828FF900B68CF0 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 				1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */,
 				1ED397BE2B7C019C00104D59 /* HomeViewController.swift */,
 				1EE634692B8289B700B68CF0 /* ProfileViewController.swift */,
+				1EDB64B32BB4F3DD009D09D7 /* AddApartmentViewController.swift */,
 				1ECFC3032B7ACA750027FFF3 /* Apartment.swift */,
 				1EBDD7D92B74257B005A526C /* SceneDelegate.swift */,
 				1E1009082B7D6381004B7F30 /* Main.storyboard */,
@@ -323,6 +326,7 @@
 				1EE6346A2B8289B700B68CF0 /* ProfileViewController.swift in Sources */,
 				1ED574BE2B76D2B600AC295B /* LoadingViewController.swift in Sources */,
 				1EAB175E2B7564CC000C6B88 /* SignUpViewController.swift in Sources */,
+				1EDB64B42BB4F3DD009D09D7 /* AddApartmentViewController.swift in Sources */,
 				1E6A4FED2BB4B47C004D8B0E /* KeychainHelper.swift in Sources */,
 				1EBDD7DA2B74257B005A526C /* SceneDelegate.swift in Sources */,
 				1ECFC3062B7ACD880027FFF3 /* CreateAnApartment.swift in Sources */,

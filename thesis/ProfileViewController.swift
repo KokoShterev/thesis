@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     let addApartmentButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Add Apartment", for: .normal)
-//        button.addTarget(self, action: #selector(addApartmentTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addApartmentTapped), for: .touchUpInside)
         return button
     }()
 
@@ -141,10 +141,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-//    @objc func addApartmentTapped() {
-//        let addApartmentVC = AddApartmentViewController() // Example
-//        navigationController?.pushViewController(addApartmentVC, animated: true)
-//    }
+    @objc func addApartmentTapped() {
+        let addApartmentVC = AddApartmentViewController()
+        present(addApartmentVC, animated: true)
+    }
 
     @objc func handleImageTap() {
         let imagePicker = UIImagePickerController()
