@@ -132,10 +132,25 @@ class SignUpViewController: UIViewController {
                 // Show an error message to the user
                 return
             }
+            guard let authResult = authResult else { return }
 
-            // Success! (You might want to store additional user data in Firestore)
-            self.handleLogin()
-            print("User created successfully!")
+            let databaseRef = Database.database().reference()
+            let usersRef = databaseRef.child("users")
+
+            let userData = [
+                "username": username
+            ] as [String : Any]
+
+            usersRef.child(authResult.user.uid).setValue(userData) { error, ref in
+                if let error = error {
+                    print("Error saving user data:", error)
+                    // Show an error message to the user
+                } else {
+                    print("User data saved successfully!")
+                    self.handleLogin() // Proceed as needed
+                    print("User created successfully!")
+                }
+            }
         }
     }
 
