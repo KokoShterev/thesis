@@ -8,7 +8,7 @@
 import Foundation
 
 struct Apartment {
-    var id: String // We'll generate a unique ID
+    var id: String
     var location: String
     var address: String?
     var numRooms: Int
@@ -23,6 +23,7 @@ struct Apartment {
     
     init?(data: [String: Any]) {
         guard
+//            let id = data["id"] as? String,
               let location = data["location"] as? String,
               let numRooms = data["numRooms"] as? Int,
               let squareMeters = data["squareMeters"] as? Int,
@@ -33,7 +34,7 @@ struct Apartment {
               let pricePerNight = data["pricePerNight"] as? Double,
               let landlordID = data["landlordID"] as? String else { return nil }
 
-        self.id = UUID().uuidString
+        self.id = data["id"] as? String ?? UUID().uuidString
         self.location = location
         self.address = data["address"] as? String
         self.numRooms = numRooms
@@ -44,7 +45,6 @@ struct Apartment {
 //        self.photos = photos
         self.pricePerNight = pricePerNight
         self.landlordID = landlordID
-
         self.availableDates = data["availableDates"] as? [DateRange]
         print("init completed")
     }
@@ -55,12 +55,46 @@ struct DateRange {
     let endDate: String
     
     init?(data: [String: String]) {
-            guard let startDate = data["startDate"], let endDate = data["endDate"] else { return nil }
-            self.startDate = startDate
-            self.endDate = endDate
-        }
+        guard let startDate = data["startDate"], let endDate = data["endDate"] else { return nil }
+        self.startDate = startDate
+        self.endDate = endDate
+    }
 }
 
+struct Comment {
+//    let id: String
+    let userID: String
+    let username: String
+    let text: String
+    let timestamp: Date
+
+    // Initializer from a Firebase DataSnapshot
+    init?(data: [String: Any]) {
+        guard 
+//            let id = data["id"] as? String,
+              let userID = data["userID"] as? String,
+              let username = data["username"] as? String,
+              let text = data["text"] as? String,
+              let timestamp = data["timestamp"] as? TimeInterval else { return nil }
+
+//        self.id = id
+        self.userID = userID
+        self.username = username
+        self.text = text
+        self.timestamp = Date(timeIntervalSince1970: timestamp)
+    }
+
+    // Helper to convert to a dictionary
+    func toDictionary() -> [String: Any] {
+        return [
+//            "id": id,
+            "userID": userID,
+            "username": username,
+            "text": text,
+            "timestamp": timestamp.timeIntervalSince1970
+        ]
+    }
+}
 
 func apartmentToDictionary(apartment: Apartment) -> [String: Any] {
     var result: [String: Any] = [

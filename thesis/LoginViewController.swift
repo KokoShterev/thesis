@@ -14,8 +14,6 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    // MARK: - Properties
-
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -24,12 +22,12 @@ class LoginViewController: UIViewController {
         return stackView
     }()
 
-    let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "logo")) // Replace with your logo image name
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+//    let logoImageView: UIImageView = {
+//        let imageView = UIImageView(image: UIImage(named: "logo"))
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
 
     let emailTextField: UITextField = {
         let textField = UITextField()
@@ -39,8 +37,7 @@ class LoginViewController: UIViewController {
         textField.leftViewMode = .always
         textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
         textField.translatesAutoresizingMaskIntoConstraints = false
-        // Inside your usernameTextField, emailTextField, passwordTextField setup:
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         let attributedPlaceholder = NSAttributedString(string: "Email", attributes: placeholderAttributes)
 
         textField.attributedPlaceholder = attributedPlaceholder
@@ -57,8 +54,7 @@ class LoginViewController: UIViewController {
         textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
-        // Inside your usernameTextField, emailTextField, passwordTextField setup:
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         let attributedPlaceholder = NSAttributedString(string: "Password", attributes: placeholderAttributes)
 
         textField.attributedPlaceholder = attributedPlaceholder
@@ -71,7 +67,7 @@ class LoginViewController: UIViewController {
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.backgroundColor = UIColor(named: "primaryColor") // Replace with your primary color
+//        button.backgroundColor = UIColor(named: "primaryColor")
         button.layer.cornerRadius = 5
         button.backgroundColor = UIColor.systemBlue
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
@@ -96,7 +92,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 245/255, alpha: 1.0)
+        view.backgroundColor = .systemBackground
         
         setupViews()
     }
@@ -115,23 +111,12 @@ class LoginViewController: UIViewController {
                 // Handle other errors
                 print("Login Error:", error._code)
             }
-//            createASampleApartment()
             return // End function execution in case of error
         }
         
         // Go to home screen
         print("Logged in successfully!")
-        // TODO: Present home screen
-//        let homeViewController = HomeViewController()
-//        navigationController?.pushViewController(homeViewController, animated: true)
-
-//        let homeViewController = HomeViewController()
-//        homeViewController.modalPresentationStyle = .fullScreen
-//        present(homeViewController, animated: true, completion: nil)
         
-//        let profileViewController = ProfileViewController()
-//        profileViewController.modalPresentationStyle = .fullScreen
-//        present(profileViewController, animated: true, completion: nil)
         let tabBarView = UIHostingController(rootView: TabBarView())
         let navigationController = UINavigationController(rootViewController: tabBarView)
         navigationController.modalPresentationStyle = .fullScreen

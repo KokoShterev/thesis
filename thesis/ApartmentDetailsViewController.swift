@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
-class ApartmentDetailsViewController: UIViewController {
+class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
 
     var apartment: Apartment
 
@@ -24,7 +28,18 @@ class ApartmentDetailsViewController: UIViewController {
     private let descriptionLabel = UILabel()
     private let priceLabel = UILabel()
     private let availabilityLabel = UILabel()
+    
+    let commentInputView = UIView()
+    let commentTextField = UITextField()
+    let sendButton = UIButton()
 
+    private var commentsRef: DatabaseReference?
+
+    private let commentsTableView = UITableView()
+
+    private var comments: [Comment] = []
+    
+    
     // Initializer
     init(apartment: Apartment) {
         self.apartment = apartment
@@ -37,16 +52,23 @@ class ApartmentDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.commentsRef = Database.database().reference(withPath: "apartments/\(apartment.id)/comments")
         setupViews()
         configureWithApartmentData()
+        fetchComments()
+        print("commentsTableView Frame:", commentsTableView.frame)
+//        printViewHierarchy()
+
     }
 
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        navigationItem.largeTitleDisplayMode = .never // Adjust if needed
+        navigationItem.largeTitleDisplayMode = .never
 
-        // Configure Scroll View and Content View
+        scrollView.backgroundColor = .systemBackground
         view.addSubview(scrollView)
+        print("scrollView's superview:", scrollView.superview)
+
         scrollView.addSubview(contentView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,8 +83,9 @@ class ApartmentDetailsViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor) // Important for scrollable content
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+        print("contentView frame after constraints: \(contentView.frame)")
 
         // Add UI Elements to Content View with Constraints
         let labelStackView = UIStackView(arrangedSubviews: [
@@ -78,6 +101,68 @@ class ApartmentDetailsViewController: UIViewController {
             labelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             labelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
+        
+        commentsTableView.backgroundColor = .systemBackground
+        commentsTableView.dataSource = self
+        commentsTableView.delegate = self
+        commentsTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
+        contentView.addSubview(commentsTableView)
+        print("commentsTableView's superview:", commentsTableView.superview)
+        
+        contentView.backgroundColor = .systemBackground
+        commentsTableView.backgroundColor = .systemBackground
+        
+        commentsTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            commentsTableView.topAnchor.constraint(equalTo: labelStackView.bottomAnchor, constant: 20),
+            commentsTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            commentsTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            commentsTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -80),
+            commentsTableView.heightAnchor.constraint(equalToConstant: 200)
+
+        ])
+
+        commentInputView.backgroundColor = .lightGray
+
+        commentTextField.placeholder = "Write a comment..."
+        commentTextField.borderStyle = .roundedRect
+
+        sendButton.setTitle("Send", for: .normal)
+        sendButton.addTarget(self, action: #selector(handleSendComment), for: .touchUpInside)
+
+        commentInputView.addSubview(commentTextField)
+        commentInputView.addSubview(sendButton)
+
+        commentTextField.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            commentTextField.topAnchor.constraint(equalTo: commentInputView.topAnchor, constant: 8),
+            commentTextField.leadingAnchor.constraint(equalTo: commentInputView.leadingAnchor, constant: 8),
+            commentTextField.bottomAnchor.constraint(equalTo: commentInputView.bottomAnchor, constant: -8),
+            commentTextField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8), // Leaves space for button
+
+            sendButton.trailingAnchor.constraint(equalTo: commentInputView.trailingAnchor, constant: -8),
+            sendButton.centerYAnchor.constraint(equalTo: commentTextField.centerYAnchor), // Align button vertically
+        ])
+
+        contentView.addSubview(commentInputView)
+        print("commentInputView's superview:", commentInputView.superview)
+        commentInputView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            commentInputView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            commentInputView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            commentInputView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            commentInputView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        print("commentTextField.isUserInteractionEnabled: \(commentTextField.isUserInteractionEnabled)")
+        print("commentsTableView constraints: \(commentsTableView.constraints)")
+    }
+
+    func fetchComments() {
+        FirebaseManager.shared.fetchComments(forApartmentID: apartment.id) { comments in
+            self.comments = comments
+            self.commentsTableView.reloadData()
+        }
     }
 
     private func configureWithApartmentData() {
@@ -96,6 +181,57 @@ class ApartmentDetailsViewController: UIViewController {
             priceLabel.text = "Price: \(formattedPrice) per night"
         }
 
-        // Add logic for formatting availableDates if needed
+        // Add logic for formatting availableDates
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Number of comments: \(comments.count)")
+        return comments.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as! CommentTableViewCell
+            
+        print("Configuring cell at index: \(indexPath.row)")
+        
+        let comment = comments[indexPath.row]
+        cell.configure(with: comment)
+        return cell
+    }
+    
+    @objc private func handleSendComment() {
+        guard let commentText = commentTextField.text, !commentText.isEmpty else { return }
+
+        // Get current user's ID
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+
+        // Fetch username from database
+        Database.database().reference(withPath: "users/\(currentUserID)/username").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self, let username = snapshot.value as? String else { return }
+            
+            let newCommentRef = self.commentsRef?.childByAutoId()
+            let newCommentData = [
+                "userID": currentUserID,
+                "username": username,
+                "text": commentText,
+                "timestamp": ServerValue.timestamp()
+            ]
+            newCommentRef?.setValue(newCommentData)
+
+            // Clear the text field
+            self.commentTextField.text = ""
+        }
+    }
+    
+    private func printViewHierarchy() {
+        func printSubviews(of view: UIView, indent: String = "") {
+            print("\(indent)\(view)")
+            for subview in view.subviews {
+                printSubviews(of: subview, indent: indent + "  ")
+            }
+        }
+
+        printSubviews(of: view)
+    }
+
 }

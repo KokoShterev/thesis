@@ -40,6 +40,7 @@
 		1E9082502B7AD80400F8CE61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */; };
 		1EAB175E2B7564CC000C6B88 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */; };
 		1EAE98592BB5719600C29E59 /* ApartmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE98582BB5719600C29E59 /* ApartmentDetailsViewController.swift */; };
+		1EAE985B2BB584E300C29E59 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE985A2BB584E300C29E59 /* CommentTableViewCell.swift */; };
 		1EBDD7D82B74257B005A526C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7D72B74257B005A526C /* AppDelegate.swift */; };
 		1EBDD7DA2B74257B005A526C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7D92B74257B005A526C /* SceneDelegate.swift */; };
 		1EBDD7DC2B74257B005A526C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD7DB2B74257B005A526C /* LoginViewController.swift */; };
@@ -80,6 +81,7 @@
 		1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EAB175D2B7564CC000C6B88 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1EAE98582BB5719600C29E59 /* ApartmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewController.swift; sourceTree = "<group>"; };
+		1EAE985A2BB584E300C29E59 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		1EBDD7D42B74257B005A526C /* thesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EBDD7D72B74257B005A526C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EBDD7D92B74257B005A526C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1E90824F2B7AD80400F8CE61 /* GoogleService-Info.plist */,
 				1ECFC3052B7ACD880027FFF3 /* CreateAnApartment.swift */,
 				1ED397C02B7C023100104D59 /* ApartmentTableViewCell.swift */,
+				1EAE985A2BB584E300C29E59 /* CommentTableViewCell.swift */,
 				1ED397C22B7C03C800104D59 /* FirebaseManager.swift */,
 				1EE6346B2B828FF900B68CF0 /* MainTabBarController.swift */,
 				1EC74EC22BAF28D00086B4C0 /* TestViewController.swift */,
@@ -324,6 +327,7 @@
 				1EE6346C2B828FF900B68CF0 /* MainTabBarController.swift in Sources */,
 				1ED397C32B7C03C800104D59 /* FirebaseManager.swift in Sources */,
 				1EBDD7D82B74257B005A526C /* AppDelegate.swift in Sources */,
+				1EAE985B2BB584E300C29E59 /* CommentTableViewCell.swift in Sources */,
 				1EC74EC32BAF28D00086B4C0 /* TestViewController.swift in Sources */,
 				1ECFC3042B7ACA750027FFF3 /* Apartment.swift in Sources */,
 				1ED397BF2B7C019D00104D59 /* HomeViewController.swift in Sources */,

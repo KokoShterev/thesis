@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
-        label.text = "User Name"
         return label
     }()
 
@@ -43,8 +42,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }()
 
     // Data
-    var apartments: [Apartment] = [] // Replace 'Apartment' with your data model
-//    var userProfile: UserProfile? // Example structure for user data
+    var apartments: [Apartment] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         setupViews()
 //        fetchUserData()
         fetchApartments()
+        fetchUserData()
 //        handleImageTap()
 
         apartmentListTableView.dataSource = self
@@ -62,6 +61,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Number of apartments: \(apartments.count)")
         return apartments.count
     }
 
@@ -71,9 +71,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
 
-    // MARK: - Table View Delegate (optional for selection handling)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Handle what happens when a cell is selected (e.g., show apartment details)
+        // Handle what happens when a cell is selected
         let selectedApartment = apartments[indexPath.row]
         let apartmentDetailsVC = ApartmentDetailsViewController(apartment: selectedApartment)
         present(apartmentDetailsVC, animated: true)
@@ -87,7 +86,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         view.addSubview(addApartmentButton)
         view.addSubview(apartmentListTableView)
 
-        // Layout setup using Auto Layout (Constraints) - Example:
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -113,29 +111,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         apartmentListTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    // MARK: - Data Handling
-//    func fetchUserData() {
-//        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
-//        let userRef = Firestore.firestore().collection("users").document(currentUserID)
-//
-//        userRef.getDocument { [weak self] (snapshot, error) in
-//            if let error = error {
-//                print("Error fetching user data: \(error)")
-//                return
-//            }
-//
-//            guard let data = snapshot?.data() else { return }
-//            // Populate 'userProfile' from data (Adapt based on your model)
-//            self?.userProfile = UserProfile(data: data)
-//            self?.nameLabel.text = self?.userProfile?.name
-//
-//            // Download profile image if available
-//            if let profileImageUrl = self?.userProfile?.profileImageUrl {
-//                self?.profileImageView.sd_setImage(with: URL(string: profileImageUrl))
-//            }
-//        }
-//    }
-
     func fetchApartments() {
         FirebaseManager.shared.fetchFilterdApartments { apartments in
             self.apartments = apartments
@@ -155,10 +130,40 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true)
     }
+    
+    func fetchUserData() {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        
+        let userRef = Database.database().reference(withPath: "users/\(currentUserID)")
+
+        userRef.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let self = self, let userData = snapshot.value as? [String: Any],
+                  let username = userData["username"] as? String else { return }
+
+            // Update the nameLabel
+            self.nameLabel.text = username
+        })
+    }
+    
+    func fetchComments(forApartmentID apartmentID: String, completion: @escaping ([Comment]) -> Void) {
+        let commentsRef = databaseRef.child("apartments/\(apartmentID)/comments") // Reference to the comments section
+
+        commentsRef.observe(.value, with: { snapshot in
+            var comments: [Comment] = []
+
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let commentData = childSnapshot.value as? [String: Any] {
+                    if let comment = Comment(data: commentData) {
+                        comments.append(comment)
+                    } else {
+                        print("Error parsing comment data")
+                    }
+                }
+            }
+            completion(comments)
+        })
+    }
+
 
 }
-
-// MARK: - Table View
-//extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
-    // ... (Implementation from previous responses) ...
-//}

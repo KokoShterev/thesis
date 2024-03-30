@@ -44,12 +44,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(apartments.count)
+//        print(apartments.count)
         return apartments.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Configuring cell at index path: \(indexPath)")
+//        print("Configuring cell at index path: \(indexPath)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApartmentCell", for: indexPath) as! ApartmentTableViewCell
         cell.configure(with: apartments[indexPath.row])
         return cell
@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Handle what happens when a cell is selected (e.g., show apartment details)
+        // Handle what happens when a cell is selected
         let selectedApartment = apartments[indexPath.row]
         let apartmentDetailsVC = ApartmentDetailsViewController(apartment: selectedApartment)
         present(apartmentDetailsVC, animated: true)

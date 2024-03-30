@@ -30,8 +30,7 @@ class SignUpViewController: UIViewController {
         textField.leftViewMode = .always
         textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
         textField.translatesAutoresizingMaskIntoConstraints = false
-        // Inside your usernameTextField, emailTextField, passwordTextField setup:
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         let attributedPlaceholder = NSAttributedString(string: "Email", attributes: placeholderAttributes)
         textField.attributedPlaceholder = attributedPlaceholder
 
@@ -47,7 +46,7 @@ class SignUpViewController: UIViewController {
         textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
 
         textField.translatesAutoresizingMaskIntoConstraints = false
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         let attributedPlaceholder = NSAttributedString(string: "Username", attributes: placeholderAttributes)
         textField.attributedPlaceholder = attributedPlaceholder
         return textField
@@ -62,8 +61,7 @@ class SignUpViewController: UIViewController {
         textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
-        // Inside your usernameTextField, emailTextField, passwordTextField setup:
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         let attributedPlaceholder = NSAttributedString(string: "Password", attributes: placeholderAttributes)
 
         textField.attributedPlaceholder = attributedPlaceholder
@@ -80,8 +78,7 @@ class SignUpViewController: UIViewController {
             textField.leftView =  UIView(frame:  CGRect(origin: .zero, size: CGSize(width: 10, height: 0)))
             textField.isSecureTextEntry = true
             textField.translatesAutoresizingMaskIntoConstraints = false
-            // Inside your usernameTextField, emailTextField, passwordTextField setup:
-            let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray] // Choose your desired color
+            let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
             let attributedPlaceholder = NSAttributedString(string: "Confirm password", attributes: placeholderAttributes)
 
             textField.attributedPlaceholder = attributedPlaceholder
@@ -100,12 +97,10 @@ class SignUpViewController: UIViewController {
         return button
     }()
 
-    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 245/255, alpha: 1.0)
-        
+        view.backgroundColor = .systemBackground
         setupViews()
     }
 
@@ -147,7 +142,7 @@ class SignUpViewController: UIViewController {
                     // Show an error message to the user
                 } else {
                     print("User data saved successfully!")
-                    self.handleLogin() // Proceed as needed
+                    self.handleLogin()
                     print("User created successfully!")
                 }
             }

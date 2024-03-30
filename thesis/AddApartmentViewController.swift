@@ -26,7 +26,7 @@ class AddApartmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Apartment"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setupUI()
     }
 
@@ -85,7 +85,7 @@ class AddApartmentViewController: UIViewController {
 
         let utilities = utilitiesText.components(separatedBy: ", ") // Split utilities string
 
-        // Get landlordID (assuming you have a way to handle authentication)
+        // Get landlordID
         guard let landlordID = Auth.auth().currentUser?.uid else { return }
 
         // Create Apartment object
@@ -102,7 +102,7 @@ class AddApartmentViewController: UIViewController {
             "landlordID": landlordID]
         )!
 
-        // Convert  to dictionary for Firebase
+        // Convert to dictionary for Firebase
         let apartmentDict = apartmentToDictionary(apartment: apartment)
 
         // Save to Firebase Realtime Database
