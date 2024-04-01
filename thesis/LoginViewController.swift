@@ -13,6 +13,8 @@ import FirebaseAuth
 
 
 class LoginViewController: UIViewController {
+    
+    var notificationHandler: CommentNotificationHandler?
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -100,27 +102,50 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
 
     @objc func handleLogin() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+       guard let email = emailTextField.text, let password = passwordTextField.text else { return }
 
-        // Authenticate user with Firebase
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-            // Handle potential errors with a default option
+       // Authenticate user with Firebase
+       Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+           if let error = error {
+               // error handling
+               return
+           }
 
-                let errorCode = AuthErrorCode.Code(rawValue: error._code)
-                // Handle other errors
-                print("Login Error:", error._code)
-            }
-            return // End function execution in case of error
+           // Authentication Successful - Set up observer and start comments listening
+           print("Logged in successfully!")
+
+           // Add observer for Auth state changes
+           NotificationCenter.default.addObserver(self, selector: #selector(self.userDidLogin), name: Notification.Name.AuthStateDidChange, object: nil)
+
+           // Attempt to start comment observation (you might move this into the userDidLogin function)
+           if let userId = Auth.auth().currentUser?.uid {
+               self.startObservingComments(userId: userId)
+           }
+
+           // Go to home screen
+           let tabBarView = UIHostingController(rootView: TabBarView())
+           let navigationController = UINavigationController(rootViewController: tabBarView)
+           navigationController.modalPresentationStyle = .fullScreen
+           self.present(navigationController, animated: true) // Use 'self.present' here
         }
-        
-        // Go to home screen
-        print("Logged in successfully!")
-        
-        let tabBarView = UIHostingController(rootView: TabBarView())
-        let navigationController = UINavigationController(rootViewController: tabBarView)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true)
+    }
+
+    @objc func userDidLogin() {
+       if let userId = Auth.auth().currentUser?.uid {
+           startObservingComments(userId: userId)
+       }
+    }
+
+    func startObservingComments(userId: String) {
+        // Initialize notificationHandler (if not already done)
+        if notificationHandler == nil {
+            notificationHandler = CommentNotificationHandler(currentUserId: userId)
+        }
+        notificationHandler?.startObservingComments()
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification Authorization Status:", settings.authorizationStatus.rawValue)
+        }
+
     }
     
     // Helper function to display an alert

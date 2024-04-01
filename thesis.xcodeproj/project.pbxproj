@@ -62,6 +62,7 @@
 		1EBDD80D2B743C95005A526C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1EBDD80C2B743C95005A526C /* FirebaseDatabase */; };
 		1EBDD80F2B743C95005A526C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1EBDD80E2B743C95005A526C /* FirebaseDatabaseSwift */; };
 		1EBDD8112B743C95005A526C /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 1EBDD8102B743C95005A526C /* FirebaseDynamicLinks */; };
+		1EC678902BB96D2C009D6B0B /* CommentNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC6788F2BB96D2B009D6B0B /* CommentNotificationHandler.swift */; };
 		1EC74EC32BAF28D00086B4C0 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC74EC22BAF28D00086B4C0 /* TestViewController.swift */; };
 		1ECFC3042B7ACA750027FFF3 /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECFC3032B7ACA750027FFF3 /* Apartment.swift */; };
 		1ECFC3062B7ACD880027FFF3 /* CreateAnApartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECFC3052B7ACD880027FFF3 /* CreateAnApartment.swift */; };
@@ -88,6 +89,7 @@
 		1EBDD7DB2B74257B005A526C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1EBDD7E02B74257F005A526C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EBDD7E52B74257F005A526C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EC6788F2BB96D2B009D6B0B /* CommentNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNotificationHandler.swift; sourceTree = "<group>"; };
 		1EC74EC22BAF28D00086B4C0 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1ECFC3032B7ACA750027FFF3 /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		1ECFC3052B7ACD880027FFF3 /* CreateAnApartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAnApartment.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1EE6346B2B828FF900B68CF0 /* MainTabBarController.swift */,
 				1EC74EC22BAF28D00086B4C0 /* TestViewController.swift */,
 				1E6A4FEC2BB4B47C004D8B0E /* KeychainHelper.swift */,
+				1EC6788F2BB96D2B009D6B0B /* CommentNotificationHandler.swift */,
 			);
 			path = thesis;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				1ED397BF2B7C019D00104D59 /* HomeViewController.swift in Sources */,
 				1EE6346A2B8289B700B68CF0 /* ProfileViewController.swift in Sources */,
 				1ED574BE2B76D2B600AC295B /* LoadingViewController.swift in Sources */,
+				1EC678902BB96D2C009D6B0B /* CommentNotificationHandler.swift in Sources */,
 				1EAB175E2B7564CC000C6B88 /* SignUpViewController.swift in Sources */,
 				1EDB64B42BB4F3DD009D09D7 /* AddApartmentViewController.swift in Sources */,
 				1E6A4FED2BB4B47C004D8B0E /* KeychainHelper.swift in Sources */,

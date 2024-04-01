@@ -56,7 +56,7 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
         setupViews()
         configureWithApartmentData()
         fetchComments()
-        print("commentsTableView Frame:", commentsTableView.frame)
+//        print("commentsTableView Frame:", commentsTableView.frame)
 //        printViewHierarchy()
 
     }
@@ -67,7 +67,7 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
 
         scrollView.backgroundColor = .systemBackground
         view.addSubview(scrollView)
-        print("scrollView's superview:", scrollView.superview)
+//        print("scrollView's superview:", scrollView.superview)
 
         scrollView.addSubview(contentView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        print("contentView frame after constraints: \(contentView.frame)")
+//        print("contentView frame after constraints: \(contentView.frame)")
 
         // Add UI Elements to Content View with Constraints
         let labelStackView = UIStackView(arrangedSubviews: [
@@ -107,7 +107,7 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
         commentsTableView.delegate = self
         commentsTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
         contentView.addSubview(commentsTableView)
-        print("commentsTableView's superview:", commentsTableView.superview)
+//        print("commentsTableView's superview:", commentsTableView.superview)
         
         contentView.backgroundColor = .systemBackground
         commentsTableView.backgroundColor = .systemBackground
@@ -146,7 +146,7 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
         ])
 
         contentView.addSubview(commentInputView)
-        print("commentInputView's superview:", commentInputView.superview)
+//        print("commentInputView's superview:", commentInputView.superview)
         commentInputView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             commentInputView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -154,8 +154,8 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
             commentInputView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             commentInputView.heightAnchor.constraint(equalToConstant: 60)
         ])
-        print("commentTextField.isUserInteractionEnabled: \(commentTextField.isUserInteractionEnabled)")
-        print("commentsTableView constraints: \(commentsTableView.constraints)")
+//        print("commentTextField.isUserInteractionEnabled: \(commentTextField.isUserInteractionEnabled)")
+//        print("commentsTableView constraints: \(commentsTableView.constraints)")
     }
 
     func fetchComments() {
@@ -185,14 +185,14 @@ class ApartmentDetailsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of comments: \(comments.count)")
+//        print("Number of comments: \(comments.count)")
         return comments.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as! CommentTableViewCell
             
-        print("Configuring cell at index: \(indexPath.row)")
+//        print("Configuring cell at index: \(indexPath.row)")
         
         let comment = comments[indexPath.row]
         cell.configure(with: comment)
